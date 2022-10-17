@@ -14,7 +14,7 @@ import java.util.Optional;
 public class StudentsWork {
 
     @GetMapping("student")
-    public String st(@RequestParam(defaultValue = "Jiri Jilek") String name, @RequestParam(defaultValue = "230573") int id) {
+    public String st(@RequestParam(defaultValue = "Greg") String name, @RequestParam(defaultValue = "xxx") int id) {
         return "Student: <b>" + name + "</b> ID: <b>" + id + "</b>";
     }
 
