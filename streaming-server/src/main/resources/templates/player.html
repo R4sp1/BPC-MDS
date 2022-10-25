@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Streaming MPEG-DASH">
+    <title>Player</title>
+</head>
+<body>
+    <h1>Přehrávání MP4 streamu: <u>Jiří Jílek, 230573</u></h1>
+    <div th:if= "${error != null}">
+        <h1 th:text="${error}" style="color: red;"></h1>
+    </div>
+
+    <div th:if= "${url != null}">
+        <video th:src="${url}" th:poster="${poster}" th:width="${width}" th:attrappend="muted=${muted}" th:autoplay="${autoplay}" controls="true"></video>
+    </div>
+</body>
+</html>

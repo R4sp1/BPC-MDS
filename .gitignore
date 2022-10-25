@@ -40,3 +40,12 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+
+### Videos ###
+Videos/
+*.mpeg
+*.mpg
+*.avi
+*.mp4
+*.mkv
