@@ -7,6 +7,7 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.HandlerMapping;
 import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.ServletException;
@@ -64,4 +65,43 @@ public class WebController {
         return "player";
     }
 
+    private final static String HLS_PATH = "C:\\Users\\jirka\\Documents\\GitHub\\BPC-MDS\\Videos\\HLS\\";
+    private final static String DASH_PATH = "C:\\Users\\jirka\\Documents\\GitHub\\BPC-MDS\\Videos\\MPEG-DASH\\";
+
+    @RequestMapping(value = {"/dash/{file}", "/hls/{file}", "/hls/{quality}/{file}"}, method = RequestMethod.GET)
+    public void adaptive_streaming(@PathVariable("file") String file, @PathVariable(value = "quality", required = false) String quality, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        File STREAM_FILE = null;
+
+        String handle = (String) request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE);
+
+        switch (handle){
+            case "/dash/{file}":
+                STREAM_FILE = new File(DASH_PATH + file);
+                break;
+            case "/hls/{file}":
+                STREAM_FILE = new File(HLS_PATH + file);
+                break;
+            case "/hls/{quality}/{file}":
+                if (!StringUtils.isEmpty(quality)){
+                    STREAM_FILE = new File(HLS_PATH + quality + "/" + file);
+                }
+                break;
+            default:
+                break;
+        }
+
+        request.setAttribute(MyResourceHttpRequestHandler.ATTR_FILE, STREAM_FILE);
+        handler.handleRequest(request, response);
+    }
+
+    @RequestMapping(value = "dashPlayer", method = {RequestMethod.GET, RequestMethod.POST})
+    public String dashPlayer(@RequestParam String url_dash, Model model) {
+        model.addAttribute("url_dash", url_dash);
+        return "dashPlayer";
+    }
+
+    @RequestMapping(value = "gallery", method = {RequestMethod.GET, RequestMethod.POST})
+    public String gallery() {
+        return "gallery";
+    }
 }

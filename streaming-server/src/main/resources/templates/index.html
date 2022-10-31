@@ -5,24 +5,63 @@
     <title>Index</title>
 </head>
 <body>
-    <form method='post' action='player'>
-        <label for="url"> URL addres</label>
-        <input type='text' name='url' id="url"/><br>
+    <div>
+        <p>-------- Cviko 4 --------</p>
+    </div>
+    <div>
+        <form method='post' action='player'>
+            <label for="url"> URL address</label>
+            <input type='text' name='url' id="url"/><br>
 
-        <label for="width"> Width</label>
-        <input type='text' name='width' id="width" value="1000" /><br>
+            <label for="width"> Width of video</label>
+            <input type='text' name='width' id="width" value="1000" /><br>
 
-        <input type="checkbox" name="muted" value="true" id="muted">
-        <input type="hidden" name="muted">
-        <label for="muted"> Muted</label><br>
+            <input type="checkbox" name="muted" value="true" id="muted">
+            <input type="hidden" name="muted">
+            <label for="muted"> Start with muted video</label><br>
 
-        <input type="checkbox" name="autoplay" value="true" id="autoplay">
-        <input type="hidden" name="autoplay" value="false">
-        <label for="autoplay"> Autoplay</label><br>
+            <input type="checkbox" name="autoplay" value="true" id="autoplay">
+            <input type="hidden" name="autoplay" value="false">
+            <label for="autoplay"> Start with autoplay enabled</label><br>
 
-        <input type="hidden" name="poster" value="https://raw.githubusercontent.com/ENeMy235/MDS/main/Screen2.jpg">
+            <input type="hidden" name="poster" value="https://raw.githubusercontent.com/ENeMy235/MDS/main/Screen2.jpg">
 
-        <input type='submit' value='Play'/>
-    </form>
+            <input type='submit' value='Play video from URL'/>
+        </form>
+    </div>
+
+    <div>
+        <br>
+        <p>-------- Cviko 5 --------</p>
+    </div>
+
+    <div>
+        <button onclick="location.href='http://localhost:8080/file'" type="button"> Local MP4 video </button>
+
+        <form method='post' action='player'>
+            <input type='hidden' name='url' id="url" value="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"/>
+            <input type='hidden' name='width' id="width" value="1080" /><br>
+            <input type="hidden" name="muted" value="true">
+            <input type="hidden" name="autoplay" value="true">
+            <input type="hidden" name="poster" value="https://raw.githubusercontent.com/ENeMy235/MDS/main/Screen2.jpg">
+            <input type='submit' value='Play video from URL'/>
+        </form>
+
+        <form method='post' action='dashPlayer'>
+            <input type='hidden' name='url_dash' id="url_dash" value="https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd"/>
+            <input type='submit' value='Play dash stream from URL'/>
+        </form>
+
+        <form method='post' action='dashPlayer'>
+            <input type='hidden' name='url_dash' id="url_dash_2" value="/dash/manifest.mpd"/>
+            <input type='submit' value='Play local dash stream'/>
+        </form>
+
+        <form method='post' action='dashPlayer'>
+            <input type='hidden' name='url_dash' id="url_dash_3" value="/hls/playlist.m3u8"/>
+            <input type='submit' value='Play local hls stream'/>
+        </form>
+
+    </div>
 </body>
 </html>
