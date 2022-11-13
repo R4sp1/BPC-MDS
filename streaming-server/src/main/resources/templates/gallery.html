@@ -5,6 +5,18 @@
     <title>Gallery</title>
 </head>
 <body>
-    <p>Jiří Jílek - 320573</p>
+    <table class="table">
+        <thead class = "thead-light">
+        <tr>
+            <th class="name">Jiří Jílek 230573</th>
+        </tr>
+
+        <tbody>
+        <tr th:each="movie: ${library}">
+            <td><a th:href="@{'video/'+${movie.getFile_name()}}">
+                <img th:src="@{'images/'+${movie.getImage_name()}}"></a></td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>
