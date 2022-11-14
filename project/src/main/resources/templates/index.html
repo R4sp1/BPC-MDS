@@ -1,0 +1,25 @@
+<!DOCTYPE html><!-- DOCTYPE html -->
+<html lang="cs">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Project</title>
+    <link rel="stylesheet" href="/css/myStyle.css" type="text/css">
+</head>
+<body>
+    <div>
+        <form method='post' action='/video'>
+            <label for="url"> URL address</label>
+            <input type='text' name='url' id="url"/><br>
+
+            <label for="width"> Width of video</label>
+            <input type='text' name='width' id="width" /><br>
+
+            <input type='submit' value='Play video from URL'/>
+        </form>
+    </div>
+
+    <div>
+        <button onclick="location.href='http://localhost:8080/videocollection'" type="button"> Videa </button>
+    </div>
+</body>
+</html>
