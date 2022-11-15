@@ -44,8 +44,9 @@ buildNumber.properties
 
 ### Videos ###
 Videos/
-*.mpeg
+*.mpg
 *.mpg
 *.avi
 *.mp4
 *.mkv
+
